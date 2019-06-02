@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Web API - SPA App</title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+        <link href="Content/styles.css" rel="stylesheet" />
+        <script src="Scripts/traineesScript.js"></script>
+    </head>
+    <body>
+
+        <div class="body-container" ng-app="myApp" ng-controller="myCtrl">
+            <h3>Web API - SPA App</h3>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">Messages</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="pane-container">
+                        <h4>Trainees</h4>                        
+
+                        <div class="tab-content-wrapper">
+                            <table style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="trainee in trainees">
+                                        <td>{{trainee.TraineeId}}</td>
+                                        <td>{{trainee.TraineeName}}</td>
+                                        <td>
+                                            <button ng-click="deleteTrainee(trainee.TraineeId)" class="btn btn-danger" role="button">
+                                                Delete
+                                            </button>
+                                        </td>
+                                        <td>                                            
+                                            <button ng-click="selectTrainee(trainee)" type="button"
+                                                    class="btn btn-primary" data-toggle="collapse" data-target="#edit-trainee">
+                                                Edit
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="table-bottom">
+                                <div>Trainees Count:  {{trainees.length}}</div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#add-trainee">Add</button>
+
+                            <div id="add-trainee" class="collapse">
+                                <form ng-submit="createTrainee()">
+                                    <div class="form-group">
+                                        <label for="traineeName">Name:</label>
+                                        <input ng-model="addTrainee.TraineeName" class="form-control"
+                                               placeholder="Name" type="text" required name="traineeName" maxlength="20" #traineeName />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" value="submit" class="btn btn-success" />
+                                        <input type="button" value="cancel" ng-click="cancelUpdate()" class="btn btn-danger" />
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div id="edit-trainee" class="collapse">
+                                <form ng-submit="updateTrainee() && collapse">
+                                    <div class="form-group">
+                                        <label for="traineeName">Name:</label>
+                                        <input ng-model="selectedTrainee.TraineeName" class="form-control"
+                                               placeholder="Name" type="text" required name="traineeName" maxlength="20" #traineeName />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="submit" value="submit" class="btn btn-success" />
+                                        <input type="button" value="cancel" ng-click="cancelUpdate()" class="btn btn-danger" />
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">profile</div>
+                <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">messages</div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
