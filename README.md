@@ -5,7 +5,11 @@ This is a Web application with an ASP.NET Web API back-end and Single Page Appli
 #
 
 ### Server - ASP.NET Web API
-- **Helpful tutorial:** [Using Web API 2 with Entity Framework 6](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-1)
+- **Helpful tutorials:** 
+
+[Using Web API 2 with Entity Framework 6](https://docs.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-1)
+
+[ASP.NET - Single-Page Applications: Build Modern, Responsive Web Apps with ASP.NET](https://msdn.microsoft.com/en-us/magazine/dn463786.aspx)
 
 
 ### Client - SPA created with AngulaIS
